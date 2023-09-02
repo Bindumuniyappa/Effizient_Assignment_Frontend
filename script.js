@@ -1,11 +1,18 @@
+
+$(document).ready(function() {
+  $('.next').click(function() {
+      $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
+  });
+  $('.prev').click(function() {
+      $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
+  });
+});
+
+
 const apiUrl="http://localhost:4000/sop";
 
 $(document).ready( function () {
-    $('a[data-toggle="tab"]').on('click', function (e) {
-    e.preventDefault(); 
-    const targetTabId = $(this).data('target'); 
-    $(targetTabId).tab('show'); 
-  });
+
   // Add event listeners for range inputs
   const listeningRange = document.getElementById("listeningRange");
   const listeningValueSpan = document.getElementById("listeningValueSpan");
@@ -39,12 +46,12 @@ $(document).ready( function () {
     updateValue(writingValueSpan, writingRange);
   });
 
-  const form = document.querySelector("form");
+  const submitBtn = document.querySelector(".submit-sop");
   const result = document.getElementById("result");
 
-  form.addEventListener("submit", async function (event) {
+  submitBtn.addEventListener("click", async function (event) {
+
     event.preventDefault();
-    console.log(form.elements);
 
     // Reset the result display
     result.style.display = "none";
@@ -58,10 +65,10 @@ $(document).ready( function () {
     const fieldStudied = document.getElementById("fieldStudied").value;
     const country = document.getElementById("country").value;
     const admissionToCollege = document.getElementById("admissionToCollege").value;
-    const programInCanada = document.getElementById("progranInCanada").value;
+    const programInCanada = document.getElementById("programInCanada").value;
     const futureGoals = document.getElementById("futureGoals").value;
-    const tuitionPay = document.getElementById("tution_pay").value;
-    const gicPay = document.getElementById("GIC_pay").value;
+    const tuitionPay = document.getElementById("tutionPay").value;
+    const gicPay = document.getElementById("gicPay").value;
 
     if (age < 18) {
       alert("Age must be at least 18 years.");
